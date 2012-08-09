@@ -1,0 +1,48 @@
+-- ×ÊÔ´Ä£¿é
+-- by f.f.
+
+module(..., package.seeall)
+
+local aniInited = {}
+
+local aniConf = {
+	ZbSimple={ path=rpath("ZbSimple", "Zombie"), frame=11 },
+	PeaShootStand={ path=rpath("PeaShoot", "Plant"), frame=8 },
+	PeaShootFire={ path=rpath("PeaShoot", "Plant"), frame=9 },
+}
+
+local loadedPlist = {}
+
+function getAni(name)
+	local conf = aniConf[name]
+	if conf == nil then
+		print("getAni err:"..name)
+		return nil
+	end
+
+	if aniInited[name] == nil then
+		local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
+		if loadedPlist[conf.path] == nil then
+			cache:addSpriteFramesWithFile(conf.path..".plist", conf.path..".png")
+			loadedPlist[conf.path] = true
+		end
+
+		local animFrames = CCMutableArray_CCSpriteFrame__:new(conf.frame)
+		local fname = ""
+		for i = 0, conf.frame do
+			if i < 10 then fname = "0"..i else fname = i end
+			animFrames:addObject(cache:spriteFrameByName(name..fname..".png"));
+		end
+		aniInited[name] = CCAnimation:animationWithFrames(animFrames, conf.sep or 0.2)
+	end
+	return aniInited[name]
+end
+
+function getAniFaceFrame(name)
+	local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
+	if aniInited[name] == nil then
+		print(file..dir.." err")
+		return nil
+	end
+	return cache:spriteFrameByName(name.."00.png")
+end
