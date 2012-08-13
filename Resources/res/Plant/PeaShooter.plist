@@ -7,7 +7,7 @@
             <key>PeaShooterFire00.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{149,1},{63,73}}</string>
+                <string>{{152,2},{63,73}}</string>
                 <key>offset</key>
                 <string>{-1,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>PeaShooterFire01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,1},{65,73}}</string>
+                <string>{{2,2},{65,73}}</string>
                 <key>offset</key>
                 <string>{-2,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>PeaShooterFire02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{75,1},{63,73}}</string>
+                <string>{{77,2},{63,73}}</string>
                 <key>offset</key>
                 <string>{-2,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>PeaShooterFire03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{75,65},{59,73}}</string>
+                <string>{{77,67},{59,73}}</string>
                 <key>offset</key>
                 <string>{-3,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>PeaShooterFire04.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,131},{55,71}}</string>
+                <string>{{2,134},{55,71}}</string>
                 <key>offset</key>
                 <string>{-3,0}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>PeaShooterFire05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{69,253},{67,63}}</string>
+                <string>{{71,258},{67,63}}</string>
                 <key>offset</key>
                 <string>{-2,-4}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>PeaShooterFire06.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,253},{67,65}}</string>
+                <string>{{2,258},{67,65}}</string>
                 <key>offset</key>
                 <string>{-2,-3}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>PeaShooterFire07.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,187},{65,69}}</string>
+                <string>{{2,191},{65,69}}</string>
                 <key>offset</key>
                 <string>{-2,-1}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>PeaShooterFire08.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{73,125},{63,71}}</string>
+                <string>{{75,128},{63,71}}</string>
                 <key>offset</key>
                 <string>{-1,0}</string>
                 <key>rotated</key>
@@ -124,7 +124,7 @@
             <key>PeaShooterStand00.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{141,193},{63,69}}</string>
+                <string>{{144,197},{63,69}}</string>
                 <key>offset</key>
                 <string>{-4,0}</string>
                 <key>rotated</key>
@@ -137,7 +137,7 @@
             <key>PeaShooterStand01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{71,189},{63,69}}</string>
+                <string>{{73,193},{63,69}}</string>
                 <key>offset</key>
                 <string>{2,-1}</string>
                 <key>rotated</key>
@@ -150,7 +150,7 @@
             <key>PeaShooterStand02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{137,257},{63,67}}</string>
+                <string>{{140,262},{63,67}}</string>
                 <key>offset</key>
                 <string>{4,-2}</string>
                 <key>rotated</key>
@@ -163,7 +163,7 @@
             <key>PeaShooterStand03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{145,129},{63,69}}</string>
+                <string>{{148,132},{63,69}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +176,7 @@
             <key>PeaShooterStand04.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{149,65},{63,71}}</string>
+                <string>{{152,67},{63,71}}</string>
                 <key>offset</key>
                 <string>{-1,0}</string>
                 <key>rotated</key>
@@ -189,7 +189,7 @@
             <key>PeaShooterStand05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,67},{63,71}}</string>
+                <string>{{2,69},{63,71}}</string>
                 <key>offset</key>
                 <string>{-3,0}</string>
                 <key>rotated</key>
@@ -202,7 +202,7 @@
             <key>PeaShooterStand06.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{69,317},{63,65}}</string>
+                <string>{{71,323},{63,65}}</string>
                 <key>offset</key>
                 <string>{-4,-2}</string>
                 <key>rotated</key>
@@ -215,7 +215,7 @@
             <key>PeaShooterStand07.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{135,321},{63,61}}</string>
+                <string>{{138,327},{63,61}}</string>
                 <key>offset</key>
                 <string>{-4,-4}</string>
                 <key>rotated</key>
@@ -228,13 +228,26 @@
             <key>PeaShooterStand08.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,319},{63,63}}</string>
+                <string>{{2,325},{63,63}}</string>
                 <key>offset</key>
                 <string>{-4,-3}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,7},{63,63}}</string>
+                <key>sourceSize</key>
+                <string>{71,71}</string>
+            </dict>
+            <key>PeaShooterStand09.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{144,197},{63,69}}</string>
+                <key>offset</key>
+                <string>{-4,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,1},{63,69}}</string>
                 <key>sourceSize</key>
                 <string>{71,71}</string>
             </dict>
@@ -248,7 +261,7 @@
             <key>size</key>
             <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:ba1624dddbf6cfd663cafbb7bfbfcbeb$</string>
+            <string>$TexturePacker:SmartUpdate:0bd04e43636fcee9737d0277cd4c5408$</string>
             <key>textureFileName</key>
             <string>PeaShooter.png</string>
         </dict>

@@ -7,6 +7,7 @@ local PlBase = require("plant.PlBase")
 local ResMgr = require("ResMgr")
 local FSM = require("utils.FSM")
 local Coor = require("utils.Coor")
+local Shoot = require("action.Shoot")
 PeaShooter=class(PlBase.PlBase)
 function new(...) return PeaShooter.new(...) end
 
@@ -27,20 +28,22 @@ end
 local FSM_INFO = {
 	PSS_STAND={
 		function(self)
---			local gx, gy = Coor.pos2Grid(self.x, self.y)
---			if l == nil or l.getPlantByIndex(gx) == nil then return "ZSS_EAT" end
+			if self:myLine() == nil then return nil end
+			local zb = self:myLine():getFstZombie(self.x)
+			if zb ~= nil then return "PSS_SHOOT" end
+			return nil
 		end,
-		deal=stand
+	},
+	PSS_SHOOT={
+		function(self)
+			if self:myLine() == nil then return PSS_STAND end
+			local zb = self:myLine():getFstZombie(self.x)
+			if zb == nil then return "PSS_STAND" end
+			return nil
+		end,
+		deal=Shoot.oneBean
 	},
 }
-
-function PeaShooter:stand()
---	print("PeaShooter stand")
-end
-
-function PeaShooter:shoot()
-	print("PeaShooter shoot")
-end
 
 function PeaShooter:update()
 	FSM.run(self, FSM_INFO)

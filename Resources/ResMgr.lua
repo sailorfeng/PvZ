@@ -6,9 +6,9 @@ module(..., package.seeall)
 local aniInited = {}
 
 local aniConf = {
-	ZbSimple={ path=rpath("ZbSimple", "Zombie"), frame=11 },
-	PeaShootStand={ path=rpath("PeaShoot", "Plant"), frame=8 },
-	PeaShootFire={ path=rpath("PeaShoot", "Plant"), frame=9 },
+	ZbSimple={ path=rpath("ZbSimple", "Zombie"), frame=12 },
+	PeaShooterStand={ path=rpath("PeaShooter", "Plant"), frame=10, sep=0.1 },
+	PeaShooterFire={ path=rpath("PeaShooter", "Plant"), frame=9 },
 }
 
 local loadedPlist = {}
@@ -29,7 +29,7 @@ function getAni(name)
 
 		local animFrames = CCMutableArray_CCSpriteFrame__:new(conf.frame)
 		local fname = ""
-		for i = 0, conf.frame do
+		for i = 0, conf.frame-1 do
 			if i < 10 then fname = "0"..i else fname = i end
 			animFrames:addObject(cache:spriteFrameByName(name..fname..".png"));
 		end
@@ -41,8 +41,14 @@ end
 function getAniFaceFrame(name)
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
 	if aniInited[name] == nil then
-		print(file..dir.." err")
+		print("getAniFaceFrame err:"..name)
 		return nil
 	end
 	return cache:spriteFrameByName(name.."00.png")
+end
+
+local objId = 0
+function genGbId()
+	objId = objId + 1
+	return objId
 end

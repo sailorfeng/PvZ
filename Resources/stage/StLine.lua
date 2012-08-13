@@ -27,7 +27,7 @@ zOrderVal[PzObj.PLANT_TYPE]=0
 function StLine:add(obj)
 	if obj == nil then print(debug.traceback()) end
 	self.objList[obj.type][obj.id] = obj
-	self.layer:addChild(obj.sprite, zOrderVal[obj.type], obj. id)
+	self.layer:addChild(obj.sprite, zOrderVal[obj.type], obj.id)
 end
 
 function StLine:del(obj)
@@ -36,6 +36,7 @@ function StLine:del(obj)
 			l[obj] = nil
 		end
 	else
+		self.layer:removeChild(obj.sprite, true)
 		self.objList[obj.type][obj.id] = nil
 	end
 end
@@ -45,6 +46,7 @@ function StLine:getFstZombie(posX)
 	local minX = Const.WIN_WIDTH
 	local zb = nil
 	for id, z in pairs(self.objList[PzObj.ZOMBIE_TYPE]) do
+--		print("getFstZombie:"..z.id.." x:"..z.x.." posX:"..posX.." minX:"..minX)
 		if posX < z.x and z.x < minX then
 			minX = z.x
 			zb = z
@@ -72,15 +74,24 @@ function StLine:update()
 	for i, o in pairs(self.objList[PzObj.BULLET_TYPE]) do o:update() end
 end
 
-function StLine:getPlantByIndex(idx)
+function StLine:getPlantByGrid(idx)
 	local gx, gy
 	for i, p in pairs(self.objList[PzObj.PLANT_TYPE]) do
-		gx,gy = Coor.pos2Grid(p.x, p.y)
-		if gx == idx then return p end
+		if Coor.x2Grid(p.x) == idx then return p end
 	end
 	return nil
 end
 
 function StLine:contains(obj)
+	if obj == nil then print(debug.traceback()) end
 	return self.objList[obj.type][obj.id] ~= nil
+end
+
+function StLine:findObjById(id)
+	for i, ol in pairs(self.objList) do
+		if ol[id] ~= nil then
+			return ol[id]
+		end
+	end
+	return nil
 end

@@ -32,6 +32,7 @@ function run(obj, conf)
 --	print("new state"..ns)
 	obj.fsm.currState = ns
 	if conf[ns].deal ~= nil then
+--		print("state deal"..ns) end
 		conf[ns].deal(obj)
 	end
 	obj.fsm.lastState = ns
