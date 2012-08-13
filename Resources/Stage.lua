@@ -8,6 +8,10 @@ require("rpath")
 local Const = require("Const")
 local Coor = require("utils.Coor")
 local StLine = require("stage.StLine")
+local UI = require("stage.UI")
+
+local ZbSimple = require("zombie.ZbSimple")
+local PeaShooter = require("plant.PeaShooter")
 
 local lineArr = {}
 function findObjLine(obj)
@@ -27,22 +31,31 @@ function findObjById(id)
 end
 
 local function zombieTest()
-	local ZbSimple = require("zombie.ZbSimple")
 	local zb = ZbSimple.new()
-	zb:initPos(Coor.grid2X(8),0)
+	zb:initPos(Coor.grid2X(math.random(6,9)),0)
 	return zb
 end
 
 local function plantTest(pos)
-	local PeaShooter = require("plant.PeaShooter")
 	local pl = PeaShooter.new()
 	pl:initPos(Coor.grid2X(pos),-20)
 	return pl 
 end
 
+function addPlant(what, line, pos)
+	local pl = plantTest(pos)
+	lineArr[line]:add(pl)
+end
+
+local zbCount = 0
 local function updateWorld()
 	for i, z in ipairs(lineArr) do
 		z:update()
+	end
+
+	if zbCount < 5 and math.random() < 0.1 then
+		zbCount = zbCount + 1
+		lineArr[math.random(#lineArr)]:add(zombieTest())
 	end
 end
 
@@ -50,15 +63,14 @@ local sceneGame = CCScene:node()
 local function initLines()
 	local l
 
-	l = StLine.new()
-	l:add(zombieTest())
-	print("create zombie done!")
-	l:add(plantTest(2))
-	print("create plant done!")
-	l.layer:setPosition(Const.GRID_LEFT, Coor.line2GlbY(2))
+	for i = 1, 5 do
+		l = StLine.new()
+		l.layer:setPosition(Const.GRID_LEFT, Coor.line2GlbY(i))
+		l.id = i
+		lineArr[i] = l
+--		l:add(plantTest(math.random(3)))
+	end
 
-	lineArr[1] = l
-	l.id = 1
 	for i = #lineArr, 1, -1 do
 		sceneGame:addChild(lineArr[i].layer)
 	end
@@ -73,11 +85,17 @@ local function stageTest()
 	bg:setPosition(Const.WIN_WIDTH/2+100,Const.WIN_HEIGHT/2-30)
     bgLayer:addChild(bg)
 	sceneGame:addChild(bgLayer)
-	print("create background done!")
 
+	-- 初始化每一行
 	initLines()
+
+	-- 初始化UI
+	UI.initUI(sceneGame)
 
 	CCDirector:sharedDirector():runWithScene(sceneGame)
 	CCScheduler:sharedScheduler():scheduleScriptFunc(updateWorld, 0, false)
+	print("Game initialize done!")
 end
+
+math.randomseed(os.time())
 stageTest()

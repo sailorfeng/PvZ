@@ -4,7 +4,7 @@
 module(..., package.seeall)
 
 function bulletHit(self)
-	print("bulletHit")
+--	print("bulletHit")
 	local zb = findObjById(self.hitZb)
 	zb:hurt(self.power)
 	self:myLine():del(self)

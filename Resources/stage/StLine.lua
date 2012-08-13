@@ -19,7 +19,6 @@ function StLine:ctor()
 end
 
 local zOrderVal = { }
-print(PzObj.BULLET_TYPE)
 zOrderVal[PzObj.BULLET_TYPE]=2
 zOrderVal[PzObj.ZOMBIE_TYPE]=1
 zOrderVal[PzObj.PLANT_TYPE]=0

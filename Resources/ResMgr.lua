@@ -33,9 +33,12 @@ function getAni(name)
 			if i < 10 then fname = "0"..i else fname = i end
 			animFrames:addObject(cache:spriteFrameByName(name..fname..".png"));
 		end
-		aniInited[name] = CCAnimation:animationWithFrames(animFrames, conf.sep or 0.2)
+
+		local ani = CCAnimation:animationWithFrames(animFrames, conf.sep or 0.2)
+		CCAnimationCache:sharedAnimationCache():addAnimation(ani, name)
+		aniInited[name] = true
 	end
-	return aniInited[name]
+	return CCAnimationCache:sharedAnimationCache():animationByName(name)
 end
 
 function getAniFaceFrame(name)

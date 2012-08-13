@@ -8,13 +8,14 @@ local ResMgr = require("ResMgr")
 local FSM = require("utils.FSM")
 local Coor = require("utils.Coor")
 local Shoot = require("action.Shoot")
-PeaShooter=class(PlBase.PlBase)
-function new(...) return PeaShooter.new(...) end
 
 local standAniName = "PeaShooterStand"
 local standAni = ResMgr.getAni(standAniName)
 local fireAniName = "PeaShooterFire"
 local fireAni = ResMgr.getAni(fireAniName)
+
+PeaShooter=class(PlBase.PlBase)
+function new(...) return PeaShooter.new(...) end
 
 function PeaShooter:ctor()
 	self.name = "PeaShooter."..self.id

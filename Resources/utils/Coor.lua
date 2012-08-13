@@ -28,3 +28,7 @@ end
 function line2GlbY(idx)
 	return math.floor(idx * Const.GRID_HEIGHT - Const.GRID_HEIGHT/2) + Const.GRID_TOP
 end
+
+function glbPosFix(x,y)
+	return grid2GlbX(glbX2Grid(x)), line2GlbY(glbY2Line(y))
+end

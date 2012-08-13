@@ -5,7 +5,6 @@ module(..., package.seeall)
 local Bean = require("bullet.Bean")
 local SHOOT_CD = 300
 function oneBean(self)
---	print("oneBean try shoot")
 	if self.shootCd == nil then self.shootCd = SHOOT_CD*0.8 end
 	self.shootCd = self.shootCd + 1
 	if self.shootCd >= SHOOT_CD then
@@ -13,7 +12,6 @@ function oneBean(self)
 		local bl = Bean.new()
 		bl:initPos(self.x+20, 0)
 		self:myLine():add(bl)
-		print("oneBean shoot")
 	end
 end
 

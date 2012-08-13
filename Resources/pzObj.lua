@@ -14,7 +14,7 @@ end
 
 function PzObj:hurt(drop)
 	self.hp = self.hp - drop
-	print("obj:"..self.id.." hurt:"..drop.." hp:"..self.hp)
+--	print("obj:"..self.id.." hurt:"..drop.." hp:"..self.hp)
 
 	-- TODO: die
 	if self.hp <= 0 then
@@ -27,6 +27,6 @@ function PzObj:myLine()
 end
 
 function PzObj:die()
-	print("obj:"..self.id.." type:"..self.type.." die")
+--	print("obj:"..self.id.." type:"..self.type.." die")
 	self:myLine():del(self)
 end
