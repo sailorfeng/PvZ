@@ -19,8 +19,16 @@ function new(...) return PeaShooter.new(...) end
 
 function PeaShooter:ctor()
 	self.name = "PeaShooter."..self.id
-	self.sprite = CCSprite:spriteWithSpriteFrame(ResMgr.getAniFaceFrame(standAniName))
-	self.sprite:runAction(CCRepeatForever:actionWithAction(CCAnimate:actionWithAnimation(standAni)))
+
+	self.sprite = CCLayer:node()
+	local shd = CCSprite:spriteWithSpriteFrame(ResMgr.getImageFrame("plantShadow"));
+	shd:setPosition(-3, -30)
+	self.sprite:addChild(shd)
+
+	local sp = CCSprite:spriteWithSpriteFrame(ResMgr.getAniFaceFrame(standAniName))
+	sp:runAction(CCRepeatForever:actionWithAction(CCAnimate:actionWithAnimation(standAni)))
+	self.sprite:addChild(sp)
+
 	self.hpMax = 100
 	self.hp = self.hpMax
 	FSM.set(self, "PSS_STAND")

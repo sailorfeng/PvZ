@@ -16,6 +16,7 @@ function PzObj:hurt(drop)
 	self.hp = self.hp - drop
 --	print("obj:"..self.id.." hurt:"..drop.." hp:"..self.hp)
 
+	if self.hpBar ~= nil then self.hpBar:setPercentage(self.hp / self.hpMax * 100) end
 	-- TODO: die
 	if self.hp <= 0 then
 		self:die()

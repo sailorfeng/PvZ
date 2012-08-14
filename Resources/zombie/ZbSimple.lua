@@ -17,8 +17,27 @@ local walkAni = ResMgr.getAni(walkAniName)
 
 function ZbSimple:ctor()
 	self.name = "ZbSimple."..self.id
-	self.sprite = CCSprite:spriteWithSpriteFrame(ResMgr.getAniFaceFrame(walkAniName))
-	self.sprite:runAction(CCRepeatForever:actionWithAction(CCAnimate:actionWithAnimation(walkAni)))
+
+	self.sprite = CCLayer:node()
+	local shd = CCSprite:spriteWithSpriteFrame(ResMgr.getImageFrame("plantShadow"));
+	shd:setPosition(10, -50)
+	self.sprite:addChild(shd)
+
+	local sp = CCSprite:spriteWithSpriteFrame(ResMgr.getAniFaceFrame(walkAniName))
+	sp:runAction(CCRepeatForever:actionWithAction(CCAnimate:actionWithAnimation(walkAni)))
+	self.sprite:addChild(sp)
+
+	local hpEmpty = CCSprite:spriteWithFile(rpath("hpEmpty.png"))
+	hpEmpty:setPosition(-15, 65)
+	self.sprite:addChild(hpEmpty)
+
+	self.hpBar = CCProgressTimer:progressWithFile(rpath("hpFull.png"))
+
+	self.hpBar:setType(kCCProgressTimerTypeHorizontalBarLR)
+	self.hpBar:setPercentage(100)
+	self.hpBar:setPosition(-15, 65)
+	self.sprite:addChild(self.hpBar, 2, -1)
+
 	self.speedX = -0.1
 	self.hpMax = 100
 	self.hp = self.hpMax

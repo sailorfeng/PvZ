@@ -11,6 +11,10 @@ local aniConf = {
 	PeaShooterFire={ path=rpath("PeaShooter", "Plant"), frame=9 },
 }
 
+local imgConf = {
+	rpath("etc")
+}
+
 local loadedPlist = {}
 
 function getAni(name)
@@ -54,4 +58,16 @@ local objId = 0
 function genGbId()
 	objId = objId + 1
 	return objId
+end
+
+for i, path in ipairs(imgConf) do
+	local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
+	if loadedPlist[path] == nil then
+		cache:addSpriteFramesWithFile(path..".plist", path..".png")
+		loadedPlist[path] = true
+	end
+end
+
+function getImageFrame(name)
+	return CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(name..".png")
 end
