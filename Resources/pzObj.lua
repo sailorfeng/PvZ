@@ -6,6 +6,7 @@ PzObj=class()
 PLANT_TYPE="plant"
 ZOMBIE_TYPE="zombie"
 BULLET_TYPE="bullet"
+SUN_TYPE="sun"
 
 function PzObj:ctor()
 	self.id = ResMgr.genGbId()

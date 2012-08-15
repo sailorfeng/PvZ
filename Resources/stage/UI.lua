@@ -9,7 +9,33 @@ local ResMgr = require("ResMgr")
 local touchLayer = CCLayer:node()
 local dropSprite = nil
 
+local touchObj = {}
+
+local function checkTouchObj(x, y)
+	local maxZ = -1
+	local touched = nil
+	for i, v in pairs(touchObj) do
+		local box = v.sprite:boundingBox()
+		local pt = touchLayer:convertToNodeSpace(CCPointMake(x,y))
+--		print("box", CCRect:CCRectGetMinX(box), CCRect:CCRectGetMinY(box), CCRect:CCRectGetMaxX(box), CCRect:CCRectGetMaxY(box), "pt", pt.x, pt.y)
+		if CCRect:CCRectContainsPoint(box, pt) then
+			if v.z > maxZ then
+				maxZ = v.z
+				touched = v
+			end
+		end
+	end
+	return touched
+end
+
 local function onTouch(eventType, x, y)
+	-- 是否点击了可点击物品
+	local touched = checkTouchObj(x,y)
+	if touched ~= nil then
+		touched:onTouch(eventType, x, y)
+		return false
+	end
+
 	local fx,fy = Coor.glbPosFix(x,y)
 	fy = fy-20
 	if eventType == CCTOUCHBEGAN then
@@ -36,3 +62,20 @@ function initUI(scene)
 	scene:addChild(touchLayer)
 end
 
+function addTouchObj(obj, z)
+	touchObj[obj.id] = obj
+	if z == nil then z = 0 end
+	obj.z = z
+	touchLayer:addChild(obj.sprite, z, obj.id)
+end
+
+function delTouchObj(obj)
+	touchLayer:removeChild(obj.sprite, true)
+	touchObj[obj.id] = nil
+end
+
+function update()
+	for i, z in pairs(touchObj) do
+		z:update()
+	end
+end

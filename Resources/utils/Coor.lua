@@ -32,3 +32,7 @@ end
 function glbPosFix(x,y)
 	return grid2GlbX(glbX2Grid(x)), line2GlbY(glbY2Line(y))
 end
+
+function distance(a, b)
+	return math.sqrt((a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y))
+end

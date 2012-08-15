@@ -39,6 +39,6 @@ function run(obj, conf)
 end
 
 function set(obj, stat)
-	obj.fsm.lastState = obj.fsm.currState or stat
+	obj.fsm.lastState = stat
 	obj.fsm.currState = stat
 end

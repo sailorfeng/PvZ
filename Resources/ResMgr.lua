@@ -9,6 +9,8 @@ local aniConf = {
 	ZbSimple={ path=rpath("ZbSimple", "Zombie"), frame=12 },
 	PeaShooterStand={ path=rpath("PeaShooter", "Plant"), frame=10, sep=0.1 },
 	PeaShooterFire={ path=rpath("PeaShooter", "Plant"), frame=9 },
+	Sun={ path=rpath("Sun"), frame=22 },
+	SunFlower={ path=rpath("SunFlower", "Plant"), frame=18 },
 }
 
 local imgConf = {

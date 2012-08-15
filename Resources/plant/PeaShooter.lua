@@ -45,7 +45,7 @@ local FSM_INFO = {
 	},
 	PSS_SHOOT={
 		function(self)
-			if self:myLine() == nil then return PSS_STAND end
+			if self:myLine() == nil then return "PSS_STAND" end
 			local zb = self:myLine():getFstZombie(self.x)
 			if zb == nil then return "PSS_STAND" end
 			return nil
