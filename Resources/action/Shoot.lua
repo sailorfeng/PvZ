@@ -17,7 +17,7 @@ function oneBean(self)
 	end
 end
 
-local SUN_CD = 500
+local SUN_CD = 800
 function createSun(self)
 	if self.sunCd == nil then self.sunCd = SUN_CD*0.8 end
 	self.sunCd= self.sunCd+ 1

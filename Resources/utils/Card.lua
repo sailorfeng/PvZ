@@ -28,7 +28,7 @@ function Card:ctor(name)
 
 	self.cdBar = CCProgressTimer:progressWithFile(rpath(name.."G.png", "Card"))
 	self.cdBar:setPosition(50, 30)
-	self.cdBar:setType(kCCProgressTimerTypeVerticalBarBT)
+	self.cdBar:setType(kCCProgressTimerTypeRadialCCW)
 	self.cdBar:setPercentage(0)
 	self.sprite:addChild(self.cdBar)
 
@@ -57,11 +57,17 @@ local FSM_INFO = {
 	},
 	CARD_CDING={
 		function(self)
-			if self.cdCnt <= 0 then return "CARD_OK" end
+			if self.cdCnt <= 0 then
+				if getScore() >= CARD_INFO[self.name].sun then return "CARD_OK" else return "CARD_UNABLE" end
+			end
 			return nil
 		end,
 		deal=function(self)
-			self.cdBar:setPercentage(math.floor(self.cdCnt/CARD_INFO[self.name].sun))
+			if getScore() < CARD_INFO[self.name].sun then
+				self.cdBar:setPercentage(100)
+			else
+				self.cdBar:setPercentage(math.floor(self.cdCnt*100/CARD_INFO[self.name].cd))
+			end
 			self.cdCnt = self.cdCnt - 1
 		end
 	},
@@ -87,11 +93,6 @@ function Card:onTouch(eventType, x, y)
 	setSelectedPlant(self.name)
 end
 
-function Card:startCD()
-	FSM.set(self, "CARD_CDING");
-	set.cdCnt = CARD_INFO[self.name].cd
-end
-
 function Card:reset()
 	self.cdBar:setPercentage(0)
 	self.cdCnt = 0
@@ -112,6 +113,11 @@ end
 
 function isCardOK(name)
 	return FSM.curr(card_list[name]) == "CARD_OK"
+end
+
+function startCD(name)
+--	FSM.set(card_list[name], "CARD_CDING");
+	card_list[name].cdCnt = CARD_INFO[name].cd
 end
 
 function getCostSun(name) return CARD_INFO[name].sun end

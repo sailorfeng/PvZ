@@ -59,6 +59,8 @@ function addPlant(line, pos, force)
 	end
 
 	local what = require("plant."..selectedPlant)
+	Card.startCD(selectedPlant)
+
 	local pl = what.new()
 	pl:initPos(Coor.grid2X(pos),-20)
 

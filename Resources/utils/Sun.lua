@@ -61,7 +61,7 @@ local FSM_INFO = {
 	},
 	SUNS_END={
 		deal=function(self)
-			addScore(self.score)
+			if FSM.last(self) ~= "SUNS_DROP" then addScore(self.score) end
 			UI.delTouchObj(self)
 		end
 	},
