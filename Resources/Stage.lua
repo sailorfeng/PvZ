@@ -10,10 +10,9 @@ local Coor = require("utils.Coor")
 local StLine = require("stage.StLine")
 local UI = require("stage.UI")
 local Sun = require("utils.Sun")
+local Card = require("utils.Card")
 
 local ZbSimple = require("zombie.ZbSimple")
-local PeaShooter = require("plant.PeaShooter")
-local SunFlower = require("plant.SunFlower")
 
 local lineArr = {}
 function findObjLine(obj)
@@ -38,6 +37,11 @@ function addScore(s)
 	score = score + s
 	scoreLabel:setString(score)
 end
+function getScore() return score end
+
+selectedPlant = nil
+function getSelectedPlant() return selectedPlant end
+function setSelectedPlant(n) selectedPlant = n end
 
 local function zombieTest()
 	local zb = ZbSimple.new()
@@ -45,16 +49,19 @@ local function zombieTest()
 	return zb
 end
 
-local function plantTest(pos)
-	local pl = SunFlower.new()
-	pl:initPos(Coor.grid2X(pos),-20)
-	return pl 
-end
-
-function addPlant(what, line, pos)
+function addPlant(line, pos, force)
 --	print("addPlant", line, pos)
 	if lineArr[line]:getPlantByGrid(pos) ~= nil then return end
-	local pl = plantTest(pos)
+
+	if force ~= true then
+		if score < Card.getCostSun(selectedPlant) then return end
+		addScore(-Card.getCostSun(selectedPlant))
+	end
+
+	local what = require("plant."..selectedPlant)
+	local pl = what.new()
+	pl:initPos(Coor.grid2X(pos),-20)
+
 	lineArr[line]:add(pl)
 end
 
@@ -91,12 +98,22 @@ local function initLines()
 		l.layer:setPosition(Const.GRID_LEFT, Coor.line2GlbY(i))
 		l.id = i
 		lineArr[i] = l
---		l:add(plantTest(math.random(3)))
 	end
 
 	for i = #lineArr, 1, -1 do
 		sceneGame:addChild(lineArr[i].layer)
 	end
+end
+
+local cardNeed = { "PeaShooter", "SunFlower" }
+local function initCards()
+	for i, n in ipairs(cardNeed) do
+		local c = Card.getCard(n)
+		c:reset()
+		c.sprite:setPosition(100 + i * 110, Const.WIN_HEIGHT - 30)
+		UI.addTouchObj(c)
+	end
+	selectedPlant = cardNeed[1]
 end
 
 local function stageTest()
@@ -124,7 +141,10 @@ local function stageTest()
 		scoreLabel:setPosition(80, Const.WIN_HEIGHT-25)
 		sceneGame:addChild(scoreLabel)
 	end
-	addScore(0)
+	addScore(100)
+
+	-- ³õÊ¼»¯¿¨Æ¬
+	initCards()
 
 	CCDirector:sharedDirector():runWithScene(sceneGame)
 	CCScheduler:sharedScheduler():scheduleScriptFunc(updateWorld, 0, false)

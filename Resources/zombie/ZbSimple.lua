@@ -14,6 +14,7 @@ function new(...) return ZbSimple.new(...) end
 
 local walkAniName = "ZbSimple"
 local walkAni = ResMgr.getAni(walkAniName)
+local eatAni = ResMgr.getAni("ZbSimpleAttack")
 
 function ZbSimple:ctor()
 	self.name = "ZbSimple."..self.id
@@ -25,7 +26,7 @@ function ZbSimple:ctor()
 
 	local sp = CCSprite:spriteWithSpriteFrame(ResMgr.getAniFaceFrame(walkAniName))
 	sp:runAction(CCRepeatForever:actionWithAction(CCAnimate:actionWithAnimation(walkAni)))
-	self.sprite:addChild(sp)
+	self.sprite:addChild(sp, 0, 1)
 
 	local hpEmpty = CCSprite:spriteWithFile(rpath("hpEmpty.png"))
 	hpEmpty:setPosition(-15, 65)
@@ -41,25 +42,39 @@ function ZbSimple:ctor()
 	self.speedX = -0.1
 	self.hpMax = 100
 	self.hp = self.hpMax
+	self.power = 10
 	FSM.set(self, "ZSS_WALK")
-end
-
-function ZbSimple:eat()
-	print("ZbSimple eat")
 end
 
 local FSM_INFO = {
 	ZSS_WALK={
 		function(self)
 			local grid = Coor.x2Grid(self.x)
---			print("x:"..self.x..",y:"..self.y.." gx:"..gx.." gy:"..gy)
---			if self:myLine() ~= nil then print("l:"..self:myLine().id) end
-			if self:myLine() ~= nil and self:myLine():getPlantByGrid(gx) ~= nil then return "ZSS_EAT" end
+			if self:myLine() == nil then return nil end
+			local pl = self:myLine():getPlantByGrid(grid)
+			if pl ~= nil then
+				self.eatPlant = pl.id
+				return "ZSS_EAT"
+			end
 		end,
-		deal=Move.uniformMove
+		deal=function(self)
+			if FSM.last(self) == "ZSS_EAT" then 
+				self.sprite:getChildByTag(1):runAction(CCRepeatForever:actionWithAction(CCAnimate:actionWithAnimation(walkAni)))
+			end
+			Move.uniformMove(self)
+		end
 	},
 	ZSS_EAT={
-		deal=Hurt.eat
+		function(self)
+			local grid = Coor.x2Grid(self.x)
+			if self:myLine() ~= nil and self:myLine():getPlantByGrid(grid) == nil then return "ZSS_WALK" end
+		end,
+		deal=function(self)
+			if FSM.last(self) == "ZSS_WALK" then
+				self.sprite:getChildByTag(1):runAction(CCRepeatForever:actionWithAction(CCAnimate:actionWithAnimation(eatAni)))
+			end
+			Hurt.eatPlant(self)
+		end
 	},
 }
 

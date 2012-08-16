@@ -7,14 +7,16 @@ local aniInited = {}
 
 local aniConf = {
 	ZbSimple={ path=rpath("ZbSimple", "Zombie"), frame=12 },
+	ZbSimpleAttack={ path=rpath("ZbSimple", "Zombie"), frame=21, sep=0.1 },
 	PeaShooterStand={ path=rpath("PeaShooter", "Plant"), frame=10, sep=0.1 },
 	PeaShooterFire={ path=rpath("PeaShooter", "Plant"), frame=9 },
-	Sun={ path=rpath("Sun"), frame=22 },
+	Sun={ path=rpath("Sun"), frame=22, sep=0.1 },
 	SunFlower={ path=rpath("SunFlower", "Plant"), frame=18 },
 }
 
 local imgConf = {
-	rpath("etc")
+	rpath("etc"),
+	rpath("Card")
 }
 
 local loadedPlist = {}
@@ -49,10 +51,7 @@ end
 
 function getAniFaceFrame(name)
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
-	if aniInited[name] == nil then
-		print("getAniFaceFrame err:"..name)
-		return nil
-	end
+	if aniInited[name] == nil then getAni(name) end
 	return cache:spriteFrameByName(name.."00.png")
 end
 

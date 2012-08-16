@@ -7,7 +7,7 @@
             <key>ZbSimple00.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{125,1},{85,121}}</string>
+                <string>{{2,83},{85,121}}</string>
                 <key>offset</key>
                 <string>{-1,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>ZbSimple01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,311},{87,117}}</string>
+                <string>{{243,496},{87,117}}</string>
                 <key>offset</key>
                 <string>{0,-3}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>ZbSimple02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,231},{79,119}}</string>
+                <string>{{124,337},{79,119}}</string>
                 <key>offset</key>
                 <string>{-3,-3}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>ZbSimple03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{123,161},{73,121}}</string>
+                <string>{{125,89},{73,121}}</string>
                 <key>offset</key>
                 <string>{-4,-2}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>ZbSimple04.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,163},{67,121}}</string>
+                <string>{{248,162},{67,121}}</string>
                 <key>offset</key>
                 <string>{-4,-1}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>ZbSimple05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{121,309},{69,119}}</string>
+                <string>{{2,415},{69,119}}</string>
                 <key>offset</key>
                 <string>{-5,-2}</string>
                 <key>rotated</key>
@@ -85,11 +85,11 @@
             <key>ZbSimple06.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{119,379},{75,117}}</string>
+                <string>{{2,565},{75,117}}</string>
                 <key>offset</key>
                 <string>{-5,-2}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{1,6},{75,117}}</string>
                 <key>sourceSize</key>
@@ -98,7 +98,7 @@
             <key>ZbSimple07.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,399},{77,115}}</string>
+                <string>{{359,605},{77,115}}</string>
                 <key>offset</key>
                 <string>{-5,-3}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>ZbSimple08.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{121,235},{73,119}}</string>
+                <string>{{2,340},{73,119}}</string>
                 <key>offset</key>
                 <string>{-6,-1}</string>
                 <key>rotated</key>
@@ -124,7 +124,7 @@
             <key>ZbSimple09.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{123,87},{73,121}}</string>
+                <string>{{250,87},{73,121}}</string>
                 <key>offset</key>
                 <string>{-6,0}</string>
                 <key>rotated</key>
@@ -137,7 +137,7 @@
             <key>ZbSimple10.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,1},{79,123}}</string>
+                <string>{{2,2},{79,123}}</string>
                 <key>offset</key>
                 <string>{-2,1}</string>
                 <key>rotated</key>
@@ -150,7 +150,7 @@
             <key>ZbSimple11.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,81},{81,121}}</string>
+                <string>{{373,85},{81,121}}</string>
                 <key>offset</key>
                 <string>{-1,0}</string>
                 <key>rotated</key>
@@ -160,6 +160,279 @@
                 <key>sourceSize</key>
                 <string>{87,125}</string>
             </dict>
+            <key>ZbSimpleAttack00.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{245,409},{85,118}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{85,118}}</string>
+                <key>sourceSize</key>
+                <string>{85,118}</string>
+            </dict>
+            <key>ZbSimpleAttack01.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{365,427},{87,117}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{87,117}}</string>
+                <key>sourceSize</key>
+                <string>{87,117}</string>
+            </dict>
+            <key>ZbSimpleAttack02.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{247,231},{87,120}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{87,120}}</string>
+                <key>sourceSize</key>
+                <string>{87,120}</string>
+            </dict>
+            <key>ZbSimpleAttack03.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{371,168},{87,120}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{87,120}}</string>
+                <key>sourceSize</key>
+                <string>{87,120}</string>
+            </dict>
+            <key>ZbSimpleAttack04.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{373,2},{81,121}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{81,121}}</string>
+                <key>sourceSize</key>
+                <string>{81,121}</string>
+            </dict>
+            <key>ZbSimpleAttack05.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{369,257},{79,120}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{79,120}}</string>
+                <key>sourceSize</key>
+                <string>{79,120}</string>
+            </dict>
+            <key>ZbSimpleAttack06.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,642},{81,116}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{81,116}}</string>
+                <key>sourceSize</key>
+                <string>{81,116}</string>
+            </dict>
+            <key>ZbSimpleAttack07.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{121,592},{84,116}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{84,116}}</string>
+                <key>sourceSize</key>
+                <string>{84,116}</string>
+            </dict>
+            <key>ZbSimpleAttack08.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{246,320},{87,119}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{87,119}}</string>
+                <key>sourceSize</key>
+                <string>{87,119}</string>
+            </dict>
+            <key>ZbSimpleAttack09.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,170},{87,120}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{87,120}}</string>
+                <key>sourceSize</key>
+                <string>{87,120}</string>
+            </dict>
+            <key>ZbSimpleAttack10.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{124,253},{82,120}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{82,120}}</string>
+                <key>sourceSize</key>
+                <string>{82,120}</string>
+            </dict>
+            <key>ZbSimpleAttack11.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{123,418},{84,118}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{84,118}}</string>
+                <key>sourceSize</key>
+                <string>{84,118}</string>
+            </dict>
+            <key>ZbSimpleAttack12.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{122,504},{86,117}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{86,117}}</string>
+                <key>sourceSize</key>
+                <string>{86,117}</string>
+            </dict>
+            <key>ZbSimpleAttack13.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{362,516},{87,116}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{87,116}}</string>
+                <key>sourceSize</key>
+                <string>{87,116}</string>
+            </dict>
+            <key>ZbSimpleAttack14.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{125,164},{87,120}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{87,120}}</string>
+                <key>sourceSize</key>
+                <string>{87,120}</string>
+            </dict>
+            <key>ZbSimpleAttack15.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{250,2},{83,121}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{83,121}}</string>
+                <key>sourceSize</key>
+                <string>{83,121}</string>
+            </dict>
+            <key>ZbSimpleAttack16.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,259},{79,120}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{79,120}}</string>
+                <key>sourceSize</key>
+                <string>{79,120}</string>
+            </dict>
+            <key>ZbSimpleAttack17.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,486},{77,118}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{77,118}}</string>
+                <key>sourceSize</key>
+                <string>{77,118}</string>
+            </dict>
+            <key>ZbSimpleAttack18.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{241,585},{84,116}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{84,116}}</string>
+                <key>sourceSize</key>
+                <string>{84,116}</string>
+            </dict>
+            <key>ZbSimpleAttack19.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{367,338},{87,118}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{87,118}}</string>
+                <key>sourceSize</key>
+                <string>{87,118}</string>
+            </dict>
+            <key>ZbSimpleAttack20.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{127,2},{85,121}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{85,121}}</string>
+                <key>sourceSize</key>
+                <string>{85,121}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -168,9 +441,9 @@
             <key>realTextureFileName</key>
             <string>ZbSimple.png</string>
             <key>size</key>
-            <string>{256,512}</string>
+            <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:974b18c68a55a6cb7f2190728417b5aa$</string>
+            <string>$TexturePacker:SmartUpdate:e5d43823f7275496e1c46719016af44c$</string>
             <key>textureFileName</key>
             <string>ZbSimple.png</string>
         </dict>

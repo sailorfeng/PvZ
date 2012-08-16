@@ -26,5 +26,11 @@ function bulletExp(self)
 end
 
 function eatPlant(self)
-
+	if self.eatCd == nil then self.eatCd = 0 end
+	if self.eatCd > 100 then
+		local pl = findObjById(self.eatPlant)
+		pl:hurt(self.power)
+		self.eatCd = 0
+	end
+	self.eatCd = self.eatCd+1
 end

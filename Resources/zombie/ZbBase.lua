@@ -14,10 +14,6 @@ function ZbBase:ctor()
 	self.speedY = 0
 end
 
-function ZbBase:eat()
-	print("ZbBase eat")
-end
-
 function ZbBase:initPos(x,y)
 	self.x = x
 	self.y = y

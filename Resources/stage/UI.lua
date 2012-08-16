@@ -5,6 +5,7 @@
 module(..., package.seeall)
 local Coor = require("utils.Coor")
 local ResMgr = require("ResMgr")
+local Card = require("utils.Card")
 
 local touchLayer = CCLayer:node()
 local dropSprite = nil
@@ -36,10 +37,11 @@ local function onTouch(eventType, x, y)
 		return false
 	end
 
+	if Card.isCardOK(getSelectedPlant()) == false then return false end
 	local fx,fy = Coor.glbPosFix(x,y)
 	fy = fy-20
 	if eventType == CCTOUCHBEGAN then
-		dropSprite = CCSprite:spriteWithSpriteFrame(ResMgr.getAniFaceFrame("PeaShooterStand"))
+		dropSprite = CCSprite:spriteWithSpriteFrame(ResMgr.getAniFaceFrame(Card.getCardModel(getSelectedPlant())))
 		dropSprite:setPosition(fx,fy)
 		dropSprite:setOpacity(100)
 		touchLayer:addChild(dropSprite)
@@ -51,7 +53,9 @@ local function onTouch(eventType, x, y)
 	elseif eventType == CCTOUCHENDED then
 		local l = Coor.glbY2Line(fy)
 		local g = Coor.glbX2Grid(fx)
-		addPlant(0, l, g)
+		if Card.isCardOK(getSelectedPlant()) then
+			addPlant(l, g)
+		end
 		touchLayer:removeChild(dropSprite, true)
 	end
 end

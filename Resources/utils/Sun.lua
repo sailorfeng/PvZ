@@ -74,10 +74,9 @@ end
 
 function Sun:onTouch(eventType, x, y)	
 	-- TODO: add score
-	local pp = self.sprite:convertToNodeSpace(PICK_POS)
-	self.toX = self.x + pp.x
-	self.toY = self.y + pp.y
---	print("onTouch", self.x, self.y, self.toX, self.toY)
+	local pp = self.sprite:getParent():convertToNodeSpace(PICK_POS)
+	self.toX = pp.x -- self.x + pp.x
+	self.toY = pp.y -- self.y + pp.y
 	self.speed = 10
 	FSM.set(self, "SUNS_PICK")
 --	print("SUNS_On_touch")

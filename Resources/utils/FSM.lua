@@ -39,6 +39,12 @@ function run(obj, conf)
 end
 
 function set(obj, stat)
+	if obj.fsm == nil then obj.fsm = {} end
 	obj.fsm.lastState = stat
 	obj.fsm.currState = stat
 end
+
+function curr(obj) return obj.fsm.currState end
+function last(obj) return obj.fsm.lastState end
+
+
