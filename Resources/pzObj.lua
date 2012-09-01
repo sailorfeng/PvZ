@@ -13,17 +13,6 @@ function PzObj:ctor()
 	self.fsm = {} 	-- use by FSM module
 end
 
-function PzObj:hurt(drop)
-	self.hp = self.hp - drop
---	print("obj:"..self.id.." hurt:"..drop.." hp:"..self.hp)
-
-	if self.hpBar ~= nil then self.hpBar:setPercentage(self.hp / self.hpMax * 100) end
-	-- TODO: die
-	if self.hp <= 0 then
-		self:die()
-	end
-end
-
 function PzObj:myLine()
 	return findObjLine(self)
 end

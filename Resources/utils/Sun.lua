@@ -19,8 +19,8 @@ function Sun:ctor()
 	self.y = 0
 	self.score = 25
 
-	self.sprite = CCSprite:spriteWithSpriteFrame(ResMgr.getAniFaceFrame("Sun"))
-	self.sprite:runAction(CCRepeatForever:actionWithAction(CCAnimate:actionWithAnimation(sunAni)))
+	self.sprite = CCSprite:createWithSpriteFrame(ResMgr.getAniFaceFrame("Sun"))
+	self.sprite:runAction(CCRepeatForever:create(CCAnimate:create(sunAni)))
 	self.sprite:setOpacity(230)
 end
 

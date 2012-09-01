@@ -15,7 +15,7 @@ function StLine:ctor()
 	self.objList[PzObj.ZOMBIE_TYPE]={}
 	self.objList[PzObj.PLANT_TYPE]={}
 	self.objList[PzObj.BULLET_TYPE]={}
-    self.layer = CCLayer:node()
+    self.layer = CCLayer:create()
 end
 
 local zOrderVal = { }
@@ -37,6 +37,12 @@ function StLine:del(obj)
 	else
 		self.layer:removeChild(obj.sprite, true)
 		self.objList[obj.type][obj.id] = nil
+	end
+end
+
+function StLine:reset()
+	for t, v in pairs(self.objList) do
+		for i, o in pairs(v) do self:del(o) end
 	end
 end
 

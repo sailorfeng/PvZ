@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{019be61b-39ad-4418-9480-c61649470510}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm</Extensions>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{561be5a6-210f-415f-83a9-1eb46fdae0e5}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc</Extensions>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{4e922b72-9097-4019-a0c7-b2e5335944f6}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;jpg;jpeg;jpe;png;manifest</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\PvZ.ico">
+      <Filter>resource</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="PvZ.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cocos2dx_support\LuaCocos2d.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cocos2dx_support\CCLuaEngine.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cocos2dx_support\Cocos2dxLuaLoader.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cocos2dx_support\tolua_fix.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cocos2dx_support\LuaCocos2d.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cocos2dx_support\CCLuaEngine.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cocos2dx_support\Cocos2dxLuaLoader.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cocos2dx_support\tolua_fix.c">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

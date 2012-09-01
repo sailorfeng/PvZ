@@ -7,7 +7,7 @@ local Coor = require("utils.Coor")
 local ResMgr = require("ResMgr")
 local Card = require("utils.Card")
 
-local touchLayer = CCLayer:node()
+local touchLayer = CCLayer:create()
 local dropSprite = nil
 
 local touchObj = {}
@@ -18,8 +18,8 @@ local function checkTouchObj(x, y)
 	for i, v in pairs(touchObj) do
 		local box = v.sprite:boundingBox()
 		local pt = touchLayer:convertToNodeSpace(CCPointMake(x,y))
---		print("box", CCRect:CCRectGetMinX(box), CCRect:CCRectGetMinY(box), CCRect:CCRectGetMaxX(box), CCRect:CCRectGetMaxY(box), "pt", pt.x, pt.y)
-		if CCRect:CCRectContainsPoint(box, pt) then
+--		print("box", box:getMinX(), box:getMinY(), box:getMaxX(), box:getMaxY(), "pt", pt.x, pt.y)
+		if box:containsPoint(pt) then
 			if v.z > maxZ then
 				maxZ = v.z
 				touched = v
@@ -41,7 +41,7 @@ local function onTouch(eventType, x, y)
 	local fx,fy = Coor.glbPosFix(x,y)
 	fy = fy-20
 	if eventType == CCTOUCHBEGAN then
-		dropSprite = CCSprite:spriteWithSpriteFrame(ResMgr.getAniFaceFrame(Card.getCardModel(getSelectedPlant())))
+		dropSprite = CCSprite:createWithSpriteFrame(ResMgr.getAniFaceFrame(Card.getCardModel(getSelectedPlant())))
 		dropSprite:setPosition(fx,fy)
 		dropSprite:setOpacity(100)
 		touchLayer:addChild(dropSprite)
@@ -62,7 +62,7 @@ end
 
 function initUI(scene)
 	touchLayer:registerScriptTouchHandler(onTouch)
-	touchLayer:setIsTouchEnabled(true)
+	touchLayer:setTouchEnabled(true)
 	scene:addChild(touchLayer)
 end
 
@@ -80,6 +80,12 @@ end
 
 function update()
 	for i, z in pairs(touchObj) do
-		z:update()
+		if z.update ~= nil then z:update() end
+	end
+end
+
+function reset()
+	for i, z in pairs(touchObj) do
+		delTouchObj(z)
 	end
 end

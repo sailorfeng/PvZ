@@ -35,14 +35,13 @@ function getAni(name)
 			loadedPlist[conf.path] = true
 		end
 
-		local animFrames = CCMutableArray_CCSpriteFrame__:new(conf.frame)
+		local animFrames = CCArray:createWithCapacity(conf.frame)
 		local fname = ""
 		for i = 0, conf.frame-1 do
-			if i < 10 then fname = "0"..i else fname = i end
-			animFrames:addObject(cache:spriteFrameByName(name..fname..".png"));
+			animFrames:addObject(cache:spriteFrameByName(string.format("%s%02d.png", name, i)))
 		end
 
-		local ani = CCAnimation:animationWithFrames(animFrames, conf.sep or 0.2)
+		local ani = CCAnimation:createWithSpriteFrames(animFrames, conf.sep or 0.2)
 		CCAnimationCache:sharedAnimationCache():addAnimation(ani, name)
 		aniInited[name] = true
 	end

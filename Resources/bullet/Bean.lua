@@ -9,18 +9,17 @@ local FSM = require("utils.FSM")
 local Coor = require("utils.Coor")
 local Move = require("action.Move")
 local Hurt = require("action.Hurt")
+local Shadow = require("part.Shadow")
 Bean=class(BlBase.BlBase)
 function new(...) return Bean.new(...) end
 
 function Bean:ctor()
 	self.name = "Bean."..self.id
 
-	self.sprite = CCLayer:node()
-	local shd = CCSprite:spriteWithSpriteFrame(ResMgr.getImageFrame("peaShadow"));
-	shd:setPosition(0, -50)
-	self.sprite:addChild(shd, 0, 1)
+	self.sprite = CCLayer:create()
+	Shadow.attatch(self, Shadow.BEAN_SHADOW, 0, -50)
 
-	local sp = CCSprite:spriteWithFile(rpath("Bean.png", "Bullet"))
+	local sp = CCSprite:create(rpath("Bean.png", "Bullet"))
 	self.sprite:addChild(sp, 0, 2)
 
 	self.speedX = 4

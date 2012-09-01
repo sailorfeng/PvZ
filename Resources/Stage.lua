@@ -68,6 +68,7 @@ function addPlant(line, pos, force)
 end
 
 local zbCount = 0
+function zbDie() zbCount = zbCount - 1 end
 CurrFrame = 0
 local function updateWorld()
 	CurrFrame = CurrFrame + 1
@@ -86,12 +87,12 @@ local function updateWorld()
 	-- 随机出太阳
 	if CurrFrame % 1000 == 0 then
 		local sun = Sun.new()
-		sun:initPath(math.random(CCRect:CCRectGetMinX(Const.FIELD), CCRect:CCRectGetMaxX(Const.FIELD)), Const.WIN_HEIGHT + 100, Coor.line2GlbY(math.random(Const.LINE_MAX)) - 30)
+		sun:initPath(math.random(Const.FIELD:getMinX(), Const.FIELD:getMaxX()), Const.WIN_HEIGHT + 100, Coor.line2GlbY(math.random(Const.LINE_MAX)) - 30)
 		UI.addTouchObj(sun)
 	end
 end
 
-local sceneGame = CCScene:node()
+local sceneGame = CCScene:create()
 local function initLines()
 	local l
 
@@ -118,12 +119,32 @@ local function initCards()
 	selectedPlant = cardNeed[1]
 end
 
+function resetStage()
+	for i = 1, #lineArr do
+		lineArr[i]:reset()
+	end
+	UI.reset()
+	-- 初始化卡片
+	initCards()
+
+	local exitBtn = { sprite=CCSprite:createWithSpriteFrame(ResMgr.getImageFrame("closeNormal")) }
+	exitBtn.id = -10
+	exitBtn.sprite:setPosition(Const.WIN_WIDTH - 50, Const.WIN_HEIGHT - 30)
+--	exitBtn.onTouch = resetStage
+	exitBtn.onTouch = function() CCDirector:sharedDirector():endToLua() end
+	UI.addTouchObj(exitBtn)
+
+	addScore(-getScore())
+	addScore(100)
+	zbCount = 0
+end
+
 local function stageTest()
 	print("starting...")
 
 	-- create bg
-    local bgLayer = CCLayer:node()
-	local bg = CCSprite:spriteWithFile(rpath("background.jpg"))
+    local bgLayer = CCLayer:create()
+	local bg = CCSprite:create(rpath("background.jpg"))
 	bg:setPosition(Const.WIN_WIDTH/2+100,Const.WIN_HEIGHT/2-30)
     bgLayer:addChild(bg)
 	sceneGame:addChild(bgLayer)
@@ -135,21 +156,20 @@ local function stageTest()
 	UI.initUI(sceneGame)
 
 	if scoreLabel == nil then
-		local sun = CCSprite:spriteWithSpriteFrame(ResMgr.getAniFaceFrame("Sun"))
+		local sun = CCSprite:createWithSpriteFrame(ResMgr.getAniFaceFrame("Sun"))
 		sun:setPosition(30, Const.WIN_HEIGHT-30)
 		sceneGame:addChild(sun)
 
-		scoreLabel = CCLabelTTF:labelWithString("0", "Arial", 28)
+		scoreLabel = CCLabelTTF:create("0", "Arial", 28)
 		scoreLabel:setPosition(80, Const.WIN_HEIGHT-25)
 		sceneGame:addChild(scoreLabel)
 	end
-	addScore(100)
 
-	-- 初始化卡片
-	initCards()
+	resetStage()
 
 	CCDirector:sharedDirector():runWithScene(sceneGame)
-	CCScheduler:sharedScheduler():scheduleScriptFunc(updateWorld, 0, false)
+	CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(updateWorld, 0, false)
+
 	print("Game initialize done!")
 end
 

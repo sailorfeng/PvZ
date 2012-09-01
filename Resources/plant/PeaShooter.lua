@@ -8,6 +8,8 @@ local ResMgr = require("ResMgr")
 local FSM = require("utils.FSM")
 local Coor = require("utils.Coor")
 local Shoot = require("action.Shoot")
+local Life = require("part.Life")
+local Shadow = require("part.Shadow")
 
 local standAniName = "PeaShooterStand"
 local standAni = ResMgr.getAni(standAniName)
@@ -20,17 +22,15 @@ function new(...) return PeaShooter.new(...) end
 function PeaShooter:ctor()
 	self.name = "PeaShooter."..self.id
 
-	self.sprite = CCLayer:node()
-	local shd = CCSprite:spriteWithSpriteFrame(ResMgr.getImageFrame("plantShadow"));
-	shd:setPosition(-3, -30)
-	self.sprite:addChild(shd)
+	self.sprite = CCLayer:create()
+	Shadow.attatch(self, Shadow.NORMAL_SHADOW, -3, -30)
 
-	local sp = CCSprite:spriteWithSpriteFrame(ResMgr.getAniFaceFrame(standAniName))
-	sp:runAction(CCRepeatForever:actionWithAction(CCAnimate:actionWithAnimation(standAni)))
+	local sp = CCSprite:createWithSpriteFrame(ResMgr.getAniFaceFrame(standAniName))
+	sp:runAction(CCRepeatForever:create(CCAnimate:create(standAni)))
 	self.sprite:addChild(sp)
 
-	self.hpMax = 100
-	self.hp = self.hpMax
+	Life.attatch(self)
+
 	FSM.set(self, "PSS_STAND")
 end
 

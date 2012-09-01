@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+  <file>
+    <filename>..\..\Debug.win32\Const.lua</filename>
+  </file>
+  <file>
+    <filename>action\Hurt.lua</filename>
+  </file>
+  <file>
+    <filename>part\Life.lua</filename>
+  </file>
+  <file>
+    <filename>action\Move.lua</filename>
+  </file>
+  <file>
+    <filename>..\..\Debug.win32\PzObj.lua</filename>
+  </file>
+  <file>
+    <filename>..\..\Debug.win32\ResMgr.lua</filename>
+  </file>
+  <file>
+    <filename>action\Shoot.lua</filename>
+  </file>
+  <file>
+    <filename>..\..\Debug.win32\Stage.lua</filename>
+  </file>
+  <file>
+    <filename>zombie\ZbBase.lua</filename>
+  </file>
+  <file>
+    <filename>zombie\ZbSimple.lua</filename>
+  </file>
+  <file>
+    <filename>..\..\Debug.win32\class.lua</filename>
+  </file>
+  <file>
+    <filename>..\..\Debug.win32\rpath.lua</filename>
+  </file>
+</project>

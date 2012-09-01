@@ -21,25 +21,26 @@ function Card:ctor(name)
 	self.name = name
 	local info = CARD_INFO[name]
 
---	self.sprite = CCLayer:node()
---	local shd = CCSprite:spriteWithSpriteFrame(ResMgr.getImageFrame(name))
+--	self.sprite = CCLayer:create()
+--	local shd = CCSprite:createWithSpriteFrame(ResMgr.getImageFrame(name))
 --	self.sprite:addChild(shd)
-	self.sprite = CCSprite:spriteWithSpriteFrame(ResMgr.getImageFrame(name))
+	self.sprite = CCSprite:createWithSpriteFrame(ResMgr.getImageFrame(name))
 
-	self.cdBar = CCProgressTimer:progressWithFile(rpath(name.."G.png", "Card"))
+	self.cdBar = CCProgressTimer:create(CCSprite:createWithSpriteFrame(ResMgr.getImageFrame(name.."G")))
 	self.cdBar:setPosition(50, 30)
-	self.cdBar:setType(kCCProgressTimerTypeRadialCCW)
+	self.cdBar:setType(kCCProgressTimerTypeRadial)
 	self.cdBar:setPercentage(0)
 	self.sprite:addChild(self.cdBar)
 
-	local sunLabel = CCLabelTTF:labelWithString(info.sun, "Arial", 5)
+	local sunLabel = CCLabelTTF:create(info.sun, "Arial", 5)
 	sunLabel:setPosition(70, 10)
 	self.sprite:addChild(sunLabel)
 
-	local sunIcon = CCSprite:spriteWithSpriteFrame(ResMgr.getImageFrame("SmallSun"))
+	local sunIcon = CCSprite:createWithSpriteFrame(ResMgr.getImageFrame("SmallSun"))
 	sunIcon:setPosition(90, 10)
 	self.sprite:addChild(sunIcon)
 
+	self.sprite:retain()
 	FSM.set(self, "CARD_UNABLE");
 	self.cdCnt = 0
 end

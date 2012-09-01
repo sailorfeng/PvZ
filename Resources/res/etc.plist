@@ -4,14 +4,53 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>peaShadow.png</key>
+            <key>closeNormal.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,68},{19,9}}</string>
+                <string>{{2,2},{40,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{40,40}}</string>
+                <key>sourceSize</key>
+                <string>{40,40}</string>
+            </dict>
+            <key>hpEmpty.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{59,2},{28,2}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{28,2}}</string>
+                <key>sourceSize</key>
+                <string>{28,2}</string>
+            </dict>
+            <key>hpFull.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{55,2},{28,2}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{28,2}}</string>
+                <key>sourceSize</key>
+                <string>{28,2}</string>
+            </dict>
+            <key>peaShadow.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{44,2},{19,9}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{1,0},{19,9}}</string>
                 <key>sourceSize</key>
@@ -20,7 +59,7 @@
             <key>plantShadow.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{64,28}}</string>
+                <string>{{2,44},{64,28}}</string>
                 <key>offset</key>
                 <string>{1,0}</string>
                 <key>rotated</key>
@@ -38,9 +77,9 @@
             <key>realTextureFileName</key>
             <string>etc.png</string>
             <key>size</key>
-            <string>{32,128}</string>
+            <string>{64,128}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:81e871e8f9bf36e019c409f747e3ef90$</string>
+            <string>$TexturePacker:SmartUpdate:9c1ff43f8def4c899c7d446fbddcb7cb$</string>
             <key>textureFileName</key>
             <string>etc.png</string>
         </dict>
