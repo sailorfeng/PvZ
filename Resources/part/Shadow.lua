@@ -8,7 +8,7 @@ NORMAL_SHADOW = "plantShadow"
 BEAN_SHADOW = "peaShadow"
 
 function attatch(obj, sdName, posX, posY)
-	local shd = CCSprite:createWithSpriteFrame(ResMgr.getImageFrame(sdName))
-	shd:setPosition(posX, posY)
-	obj.sprite:addChild(shd, -1, Const.SHADOW_SP_TAG)
+	obj.shd = CCSprite:createWithSpriteFrame(ResMgr.getImageFrame(sdName))
+	obj.shd:setPosition(posX, posY)
+	obj.sprite:addChild(obj.shd, -1, Const.SHADOW_SP_TAG)
 end

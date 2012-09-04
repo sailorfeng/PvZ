@@ -9,6 +9,7 @@ local Coor = require("utils.Coor")
 local Shoot = require("action.Shoot")
 local Life = require("part.Life")
 local Shadow = require("part.Shadow")
+local Ani = require("part.Ani")
 
 SunFlower=class(PlBase.PlBase)
 function new(...) return SunFlower.new(...) end
@@ -20,9 +21,7 @@ function SunFlower:ctor()
 	self.sprite = CCLayer:create()
 	Shadow.attatch(self, Shadow.NORMAL_SHADOW, -3, -30)
 
-	local sp = CCSprite:createWithSpriteFrame(ResMgr.getAniFaceFrame("SunFlower"))
-	sp:runAction(CCRepeatForever:create(CCAnimate:create(flowerAni)))
-	self.sprite:addChild(sp)
+	Ani.attatch(self, "SunFlower")
 
 	Life.attatch(self)
 

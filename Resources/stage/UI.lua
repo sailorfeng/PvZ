@@ -29,6 +29,13 @@ local function checkTouchObj(x, y)
 	return touched
 end
 
+local function canPutPlant(l, g)
+	if l < 1 or l > Const.LINE_MAX then return false end
+	if g < 1 or g > Const.GRID_MAX then return false end
+	if hasPlant(l, g) ~= nil then return false end
+	return true
+end
+
 local function onTouch(eventType, x, y)
 	-- 是否点击了可点击物品
 	local touched = checkTouchObj(x,y)
@@ -40,7 +47,13 @@ local function onTouch(eventType, x, y)
 	if Card.isCardOK(getSelectedPlant()) == false then return false end
 	local fx,fy = Coor.glbPosFix(x,y)
 	fy = fy-20
+
+	local l = Coor.glbY2Line(fy)
+	local g = Coor.glbX2Grid(fx)
+	local canPut = canPutPlant(l, g)
 	if eventType == CCTOUCHBEGAN then
+		if canPut == false then return false end
+
 		dropSprite = CCSprite:createWithSpriteFrame(ResMgr.getAniFaceFrame(Card.getCardModel(getSelectedPlant())))
 		dropSprite:setPosition(fx,fy)
 		dropSprite:setOpacity(100)
@@ -49,11 +62,13 @@ local function onTouch(eventType, x, y)
 	end
 
 	if eventType == CCTOUCHMOVED then
-		dropSprite:setPosition(fx,fy)
+		if canPut == false then
+			dropSprite:setPosition(10000, 10000)
+		else
+			dropSprite:setPosition(fx,fy)
+		end
 	elseif eventType == CCTOUCHENDED then
-		local l = Coor.glbY2Line(fy)
-		local g = Coor.glbX2Grid(fx)
-		if Card.isCardOK(getSelectedPlant()) then
+		if canPut and Card.isCardOK(getSelectedPlant()) then
 			addPlant(l, g)
 		end
 		touchLayer:removeChild(dropSprite, true)

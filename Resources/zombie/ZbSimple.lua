@@ -23,11 +23,9 @@ function ZbSimple:ctor()
 	self.sprite = CCLayer:create()
 	Shadow.attatch(self, Shadow.NORMAL_SHADOW, 10, -50)
 
-	local sp = CCSprite:createWithSpriteFrame(ResMgr.getAniFaceFrame("ZbSimple"))
-	self.sprite:addChild(sp, 0, Const.ANI_SP_TAG)
 	Ani.attatch(self,"ZbSimple")
 
-	Life.attatch(self)
+	Life.attatch(self, -15, 65)
 	self.speedX = -0.1
 	self.power = 10
 

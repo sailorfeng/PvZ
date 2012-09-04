@@ -10,9 +10,8 @@ local Coor = require("utils.Coor")
 local Shoot = require("action.Shoot")
 local Life = require("part.Life")
 local Shadow = require("part.Shadow")
+local Ani = require("part.Ani")
 
-local standAniName = "PeaShooterStand"
-local standAni = ResMgr.getAni(standAniName)
 local fireAniName = "PeaShooterFire"
 local fireAni = ResMgr.getAni(fireAniName)
 
@@ -25,9 +24,7 @@ function PeaShooter:ctor()
 	self.sprite = CCLayer:create()
 	Shadow.attatch(self, Shadow.NORMAL_SHADOW, -3, -30)
 
-	local sp = CCSprite:createWithSpriteFrame(ResMgr.getAniFaceFrame(standAniName))
-	sp:runAction(CCRepeatForever:create(CCAnimate:create(standAni)))
-	self.sprite:addChild(sp)
+	Ani.attatch(self, "PeaShooterStand")
 
 	Life.attatch(self)
 

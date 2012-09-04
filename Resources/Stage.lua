@@ -49,9 +49,14 @@ local function zombieTest()
 	return zb
 end
 
+function hasPlant(line, pos)
+	if line < 1 or line > #lineArr then error(string.format("hasPlant line err:%d", line)) end
+	return lineArr[line]:getPlantByGrid(pos)
+end
+
 function addPlant(line, pos, force)
 --	print("addPlant", line, pos)
-	if lineArr[line]:getPlantByGrid(pos) ~= nil then return end
+	if hasPlant(line, pos) ~= nil then return end
 
 	if force ~= true then
 		if score < Card.getCostSun(selectedPlant) then return end
